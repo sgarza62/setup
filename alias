@@ -1,0 +1,74 @@
+# Tinder Dev
+alias dcompose='docker-compose'
+alias kick='docker-compose stop nginx && docker-compose up -d --no-recreate' # restart nginx and all down containers
+alias realias='emacs /Users/hugestud/.bash_profile; source /Users/hugestud/.bash_profile' # edit and reload this file
+alias dc='docker-compose'
+alias json='python -m json.tool'
+function restart() { dc build $1 && dc up -d --no-deps $1; } # restart a single container (run dc build first)
+function dcssh() { docker exec -it  "tinder_$1_1" bash; }  # ssh into container by docker-compose identifier
+
+alias dir="ls -lah"
+
+alias ..='cd ..'
+alias ,,='cd ../..'
+alias proc="ps aux | grep"
+alias h="heroku"
+alias fa="echo '༼ ༎ຶ ෴ ༎ຶ༽'"
+alias shrug="echo '¯\_(ツ)_/¯'"
+alias flip="echo '(╯°□°）╯︵ ┻━┻'"
+alias restore="echo '┬──┬◡ﾉ(° -°ﾉ)'"
+alias realias='emacs ~/.profile; source ~/.profile'
+
+alias json='python -m json.tool'
+
+#git                                                                                                                                         
+alias gs="git status --short"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gpr="git pull --rebase"
+alias gprom="git pull --rebase origin master"
+alias gp="git push"
+alias gpom="git push origin master"
+alias gphm="git push heroku master"
+alias gp="git push"
+alias ga="git add -A; git add ."
+alias gpb="git push origin --set-upstream "
+alias gms="git merge --squash --ff"
+
+#heroku                                                                                                                                      
+alias h="heroku"
+alias hcs="heroku run console --remote staging"
+alias hcp="heroku run console --remote production"
+alias hls="heroku logs --remote staging --tail"
+alias hlp="heroku logs --remote production --tail"
+alias hps="heroku ps --remote staging"
+alias hpp="heroku ps --remote production"
+alias hds="heroku pg:psql --remote staging"
+alias hdp="heroku pg:psql --remote production"
+
+#curl                                                                                                                                        
+alias post="curl -X POST -d"
+
+#misspellings                                                                                                                                
+alias rials="rails"
+alias gti="git"
+
+# tinder                                                                                                                                     
+alias i="cd ~/workspace/TinderBackend/inside.gotinder.com"
+alias a="cd ~/workspace/TinderBackend/api.gotinder.com"
+alias t="cd ~/workspace/gotinder.com"
+alias ti="cd ~/workspace/tinder_ios"
+alias ts="cd ~/workspace/TinderBackend/tinder_server"
+alias dg="cd ~/workspace/TinderBackend/dating_game"
+alias dev="ssh tinderdev@mgr1.dev1.gotinder.com"
+alias c="cd ~/workspace/config"
+alias tc="cd ~/workspace/TinderBackend/content_processor"
+alias ldp="cd ~/workspace/TinderBackend/local_dev_plus"
+alias b="cd ~/workspace/TinderBackend/backend"
+alias hs="cd ~/workspace/Hotspots"
+alias fli="cd ~/workspace/Flare-iOS"
+alias hsredis="redis-cli -h pub-redis-11123.us-east-1-4.3.ec2.garantiadata.com -p 11123 -a MQDw04Urk2KpCugF"
+alias bh="sed -l 's/.*app\[web\..*\]\: //' | bunyan"
+alias dl="cd ~/workspace/TinderBackend/tinde.rs"
+
+export EDITOR=emacs
