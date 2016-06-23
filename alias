@@ -1,13 +1,16 @@
 # Tinder Dev
 alias dcompose='docker-compose'
 alias kick='docker-compose stop nginx && docker-compose up -d --no-recreate' # restart nginx and all down containers
-alias realias='emacs /Users/hugestud/.bash_profile; source /Users/hugestud/.bash_profile' # edit and reload this file
+alias realias='emacs /Users/santiagogonzalez/.profile; source /Users/santiagogonzalez/.profile' # edit and reload this file
 alias dc='docker-compose'
 alias json='python -m json.tool'
 function restart() { dc build $1 && dc up -d --no-deps $1; } # restart a single container (run dc build first)
 function dcssh() { docker exec -it  "tinder_$1_1" bash; }  # ssh into container by docker-compose identifier
 
 alias dir="ls -lah"
+alias ls="ls -lt"
+function rgrep() { grep --recursive "$@" ./ --exclude *.log --exclude-dir *node_modules* --exclude-dir *.git --exclude-dir data; }
+function matching() { emacs $(rgrep "$@" -l); }
 
 alias ..='cd ..'
 alias ,,='cd ../..'
@@ -22,6 +25,7 @@ alias realias='emacs ~/.profile; source ~/.profile'
 alias json='python -m json.tool'
 
 #git                                                                                                                                         
+alias gb="git branch"
 alias gs="git status --short"
 alias gd="git diff"
 alias gdc="git diff --cached"
@@ -34,6 +38,10 @@ alias gp="git push"
 alias ga="git add -A; git add ."
 alias gpb="git push origin --set-upstream "
 alias gms="git merge --squash --ff"
+source ~/git-completion.bash
+source ~/git-prompt.sh
+PS1='\[\033[1;37m\]\w\[\033[1;37m\] $(__git_ps1 "[%s]") $(node --version)\[\033[0m\] \n$ '
+
 
 #heroku                                                                                                                                      
 alias h="heroku"
@@ -63,12 +71,18 @@ alias dg="cd ~/workspace/TinderBackend/dating_game"
 alias dev="ssh tinderdev@mgr1.dev1.gotinder.com"
 alias c="cd ~/workspace/config"
 alias tc="cd ~/workspace/TinderBackend/content_processor"
-alias ldp="cd ~/workspace/TinderBackend/local_dev_plus"
+alias ldp="cd ~/workspace/TinderBackend/tindev"
 alias b="cd ~/workspace/TinderBackend/backend"
 alias hs="cd ~/workspace/Hotspots"
 alias fli="cd ~/workspace/Flare-iOS"
 alias hsredis="redis-cli -h pub-redis-11123.us-east-1-4.3.ec2.garantiadata.com -p 11123 -a MQDw04Urk2KpCugF"
 alias bh="sed -l 's/.*app\[web\..*\]\: //' | bunyan"
 alias dl="cd ~/workspace/TinderBackend/tinde.rs"
+alias tindev="/Users/santiagogonzalez/workspace/TinderBackend/tindev/tindev"
 
 export EDITOR=emacs
+export LDP_PATH=/Users/santiagogonzalez/workspace/TinderBackend
+export COMPOSE_PROJECT_NAME=tinder
+eval "$(docker-machine env dev 2>/dev/null)"
+
+export HOSTNAME=
